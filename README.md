@@ -89,24 +89,7 @@ Here is exactly how the backend packages interact behind the scenes:
    * The server immediately uses its active connection memory map to find the specific farmer who owns the crop, and sends out network messages like "CATALOG_UPDATED" or "ORDER_SHIPPED".
    * The background thread running inside the farmer's JavaFX window intercepts this text string, and passes the refresh command to Platform.runLater(). This updates their dashboard tables instantly without making them click a manual reload button.
 
-How to run
 
-Option A — IntelliJ IDEA (recommended)
-
-1. File -> Open and choose your farmer-market-platform folder. IntelliJ imports it as a Maven project automatically.
-2. Wait for dependency indexing to complete (it will automatically download JavaFX, MySQL Connector, BCrypt, and logging components).
-3. Open the Maven sidebar menu on the right edge -> expand Plugins -> expand javafx -> double-click javafx:run. This is the easiest choice because the Maven configuration handles all module paths for you.
-
-If running by clicking the green run triangle directly on Main.java:
-1. Open Main.java, then click Run -> Edit Configurations...
-2. Add VM options: --module-path "${PATH_TO_FX}" --add-modules javafx.controls,javafx.fxml
-(where PATH_TO_FX points directly to your local computer's downloaded JavaFX SDK lib folder).
-
-Option B — Command line (Maven)
-
-Navigate to the project root folder and run:
-cd farmer-market-platform
-mvn javafx:run
 
 Inspecting the database
 
